@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>storage练习</title>
+    <link rel="icon" href="../img/snowflake.png" />
+    <style>
+    .table{
+        width: 350px;
+        height: 150px;
+        border: 7px solid #e0e0e0;
+        overflow: hidden;
+        position: relative;
+    }
+    .word{
+        font-size: 15px;
+        margin-bottom: 15px;
+        margin-left: 6px;
+    }
+    .one{
+        background-color:#e0e0e0;
+        display:inline-block;
+        margin-right: 20px;
+        font-size: 15px;
+        margin-bottom: 15px;
+        margin-left: 3px;
+        
+    }
+    .add{
+        width: 120px;
+        height: 32px;
+        text-align: center;
+        color: gray;
+    }
+    #content{
+        width: 180px;
+        height: 40px;
+        line-height:40px;
+        margin-top: 7px;
+        margin-left: 6px;
+    }
+    #delet{
+        width: 30px;
+        height: 20px;
+        background-color:#e0e0e0;
+        color:white;
+        font-size: 15px;
+        position: absolute;
+        left: 315px;
+        top: 120px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="table">
+        <form action="#" method="get"> 
+            <input type="search" name="search" id="content" list="names" placeholder="请输入想要查找的商品"  autofocus="autofocus">
+            <input type="button" value="搜索" class="add" onclick="saveStorage();"/>
+        </form>
+        <div class="word">最近搜索</div>
+        <div id="words"></div>
+        <input type="button" id="delet" value="X" onclick="clearStorage();" />
+    </div>
+</body>
+<script>
+    function saveStorage() {
+        var data = document.getElementById("content").value;
+        var time = new Date().getTime();
+        localStorage.setItem(time, data);
+        loadStorage();
+    }
+    function loadStorage() {
+        var result="";
+        for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            var date = new Date();
+            result += "<div class='one'>" + value + "</div>";
+        }
+        var target = document.getElementById("words");
+        target.innerHTML = result;
+    }
+
+    function clearStorage(){
+        localStorage.clear();
+        loadStorage();
+    }
+
+
+
+</script>
+</html>
