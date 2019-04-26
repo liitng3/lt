@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#cv{
+			border:1px solid pink;
+			position: absolute;
+            width:300px;
+            height:150px;
+		}
+        #text{
+            width: 300px;
+			height: 150px;
+			position:absolute;
+			
+        }
+	</style>
+</head>
+<body>
+	<canvas id="text"></canvas>
+	<canvas id="cv"></canvas>
+</body>
+    <script type="text/javascript">
+        var text = document.getElementById("text");
+        var texts = text.getContext("2d");
+		var arr =["特等奖","一等奖","二等奖","三等奖","谢谢惠顾"];
+		var  index = parseInt(Math.random()*arr.length);
+        texts.font = "italic 65px 隶书";
+        texts.fillStyle = "hotpink";
+        texts.textAlign='center';
+        texts.textBaseline='middle';
+        texts.fillText(arr[index],150,70,300);
+
+
+
+        var cv = document.getElementById("cv");
+		var ctx = cv.getContext("2d");
+		ctx.beginPath();
+		ctx.fillStyle="gray";
+		ctx.fillRect(0,0,300,150);
+		ctx.globalCompositeOperation="destination-out";
+		ctx.closePath();
+
+
+
+
+		cv.onmousedown = function(){
+			var e = e || window.event;
+			var x = e.clientX-cv.offsetLeft;
+			var y = e.clientY-cv.offsetTop;
+			ctx.beginPath();
+			ctx.moveTo(x,y);
+			ctx.arc(x,y,15,0,Math.PI*2,false);
+			ctx.fill();	
+			ctx.closePath();	
+			cv.onmousemove = function(){
+				var e = e || window.event;
+				var x1 = e.clientX-cv.offsetLeft;
+				var y1 = e.clientY-cv.offsetTop;
+                ctx.beginPath();
+				ctx.moveTo(x1,y1);
+				ctx.arc(x1,y1,15,0,Math.PI*2,false);
+				ctx.fill();	
+                ctx.closePath();
+
+
+				var datas = ctx.getImageData(0,0,cv.width,cv.height);
+                var data = datas.data;
+                var count = 0;
+                for(var i=0;i<data.length;i+=4){
+                    var a = data[i+3];
+                    if(a==0){
+                        count++;
+                    }
+                    if(count>=data.length/4*0.85){
+                        ctx.clearRect(0,0,cv.width,cv.height);
+                    }
+                }		
+			}
+		}
+		
+	</script>
+</html>
+ 
