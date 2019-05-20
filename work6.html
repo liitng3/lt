@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #all{
+            width: 300px;
+            height: 350px;
+            box-shadow:0px 0px 8px rgb(136, 136, 139);
+            transition: box-shadow 1s linear;
+        }
+        #box{
+            width: 300px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        #mz{
+            position: absolute;
+            top:0;
+            left:0;
+            z-index:1;
+            width: 300px;
+            height: 200px;
+            background-color:rgba(89, 92, 95,0);
+            transition: background-color 1s linear;
+        }
+        img{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 300px;
+            height: 200px;
+            transition: transform 1s linear;
+        }
+        #circle{
+            z-index: 2;
+            width: 45px;
+			height: 45px;
+			background: rgb(226, 106, 7);
+			border-radius: 50px;
+            font:15px bolder;
+            color:white;
+            position: absolute;
+            top:20px;
+            left:240px;
+            text-align: center;
+            display: flex;
+        }
+        #center{
+            z-index: 2;
+            background-color: white;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            bottom:-80px;
+            left: 0;
+            transition: bottom 1s linear;
+        }
+        #text{
+            width: 270px;
+            font-size: 10px;
+            display: flex;
+            padding-left: 15px;
+        }
+        #zp{
+            position: absolute;
+            top:-25px;
+            left: 0;
+            text-align: center;
+            line-height: 25px;
+            font:15px bolder;
+            width: 50px;
+            height: 25px;
+            color: white;
+            background:rgb(226, 106, 7); 
+            
+        }
+        h1{
+            font-size: 30px;
+            padding-left: 15px;
+        }
+        h2{
+            font-size: 20px;
+            color:rgb(226, 106, 7); 
+            padding-left: 15px;
+        }
+        #bottom{
+            width: 270px;
+            height: 20px;
+            padding-top: 20px;
+            padding-left: 15px;
+            font-size: 10px;
+            color:gray;
+        }
+        #all:hover #center{
+            bottom: 0px;
+        }
+        #all:hover img{
+            transform: scale(2);
+            
+        }
+        #all:hover{
+            box-shadow:0px 0px 8px rgb(46, 46, 48);
+        }
+        #all:hover #mz{
+            background-color:rgba(89, 92, 95,0.65);
+        }
+    </style>
+</head>
+<body>
+    <div id="all">
+        <div id="box">
+            <div id="mz"></div>
+            <img src="img/zhanqiao.jpg">
+            <div id="circle">
+                    &nbsp&nbsp&nbsp15&nbsp&nbsp&nbsp&nbsp
+                    五月
+            </div>
+            <div id="center">
+                <div id="zp">照片</div>
+                <h1>青岛栈桥</h1>
+                <h2>国家AAAA级旅游景区</h2>
+                <div id="text">
+                    青岛栈桥是青岛海滨风景区的景点之一，是国务院于1982年首批公布的国家风景名胜区。
+                    青岛栈桥位于游人如织的青岛中山路南端，桥身从海岸探入如弯月般的青岛湾深处。桥身供游人参观并在此停靠旅游船，由此乘船可看海上青岛。
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+                <p>10分钟前&nbsp&nbsp&nbsp123评论</p>
+        </div>
+    </div>
+    
+</body>
+</html>
